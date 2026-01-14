@@ -1,0 +1,1 @@
+SELECT nom, capacite FROM salles UNION SELECT nom where MAX(capacite) FROM etage
