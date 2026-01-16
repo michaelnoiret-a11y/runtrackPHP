@@ -1,0 +1,45 @@
+<?php
+$pdo = new PDO("mysql:host=localhost;dbname=jour08;charset=utf8","root", "");
+$sql = "SELECT * FROM etudiants";
+$query = $pdo->prepare($sql);
+$query->execute();
+$result = $query->fetchAll(mode: PDO::FETCH_ASSOC);
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+
+    </header>
+    <main>
+    <?php
+    echo "<table border='1'>";
+    echo" <tr>
+      <th scope='col'>prenom</th>
+      <th scope='col'>nomn</th>
+      <th scope='col'>naissance</th>
+      <th scope='col'>sexe</th>
+      <th scope='col'>email</th>
+    </tr>";
+    
+    foreach ($result as $value) {
+        echo "<tr>";
+        echo " <td>". $value["prenom"] ."</td>";
+        echo " <td>". $value["nom"] ."</td>";
+        echo " <td>". $value["naissance"] ."</td>";
+        echo " <td>". $value["sexe"] ."</td>";
+        echo " <td>". $value["email"] ."</td>";
+        echo "</tr>";
+    }
+    echo"</table>";
+    ?>
+    </main>
+</body>
+</html>
