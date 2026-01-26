@@ -1,0 +1,103 @@
+header {
+    display: flex;
+    flex-direction: row;
+    flex: auto;
+    justify-content: right;
+    border-radius: 10px;
+    box-sizing: border-box;
+    box-shadow: inset;
+    margin: 10px;
+    padding: 10px;
+    background-color: white;
+}
+
+body {
+    background-color: black;
+    /* background-image: medias/Cvlte.jpg; */
+    /* background: url(https://www.billboard-japan.com/common/special/others/220225_CVLTE/img/top.jpg);
+    background-repeat: no-repeat;
+    background-size: cover; */
+
+}
+
+.bg-index {
+    /* display: flex;
+    flex-direction: column;
+    flex: auto; */
+    background: url(https://www.billboard-japan.com/common/special/others/220225_CVLTE/img/top.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.body-profil {
+    display: flex;
+    flex-direction: column;
+    flex: auto;
+
+    /* background: url(https://www.billboard-japan.com/common/special/others/220225_CVLTE/img/top.jpg);
+    background-repeat: no-repeat;
+    background-size: cover; */
+
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    
+    /* background: url(https://www.billboard-japan.com/common/special/others/220225_CVLTE/img/top.jpg); */
+    
+}
+
+.main {
+    color: white;
+}
+
+img {
+    height: 700px;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+}
+
+h2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    margin: 10px;
+    padding: 10px;
+    background-color: white;
+    box-sizing: content-box;
+    max-width: 800px;
+    /* flex-shrink: initial;
+    flex-wrap: wrap;
+    flex-flow: column;
+    flex-basis: 10px;
+    field-sizing: content; */
+    
+}
+
+footer {
+    display: flex ;
+    flex-direction: row;
+    flex: auto;
+    justify-content: center;
+    border-radius: 10px;
+    margin: 10px;
+    background-color: white;
+    color: black;
+}
+
+/* @media {
+    
+} */
