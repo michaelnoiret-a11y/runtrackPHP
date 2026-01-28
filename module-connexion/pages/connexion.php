@@ -11,17 +11,20 @@ $result = $query->fetch(PDO::FETCH_ASSOC);
 
  if ($result && password_verify($_POST["mdp"], $result['password'])) {
         echo "Identifiants correct";
-        if ($result["login"] == "admin" ) {
-            $_SESSION['login'] = "admin";
-            header("Location: admin.php");
-            exit;
-
-        }else{
+        var_dump($result["login"]);
+        
             $_SESSION['user'] = $result;
             $_SESSION["login"] = $result["login"];
             $_SESSION["mdp"] = $result["password"];
             $_SESSION["prenom"] = $result["prenom"];
             $_SESSION["nom"] = $result["nom"];
+
+        if ($result["login"] == "admin" ) {
+            header("Location: admin.php");
+            exit;
+
+        }else{
+      
         header("Location: profil.php");
         exit;
         }

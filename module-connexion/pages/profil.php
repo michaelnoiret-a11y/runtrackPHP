@@ -1,12 +1,12 @@
 <?php
 require "../include/config.php";
  
-if(!isset ($_SESSION['user']) ){
+if(!isset ($_SESSION['login']) ) {
     header("Location: ../index.php");
     exit;
 }
 else{
-    $user = $_SESSION["user"];
+    $user = $_SESSION["login"];
 }
 
 // if($_SESSION['login'] !== "admin"){

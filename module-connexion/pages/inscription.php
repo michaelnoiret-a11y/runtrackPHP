@@ -1,5 +1,6 @@
 <?php
 require "../include/config.php";
+
 if (isset($_POST["submit"])) {
     if (!empty($_POST["login"] && (!empty($_POST["mdp"] && (!empty($_POST["prenom"] && (!empty($_POST["nom"])))))))) {
 $sql = "INSERT INTO utilisateurs (login, password, prenom, nom) VALUES (:login, :mdp, :prenom, :nom) ";

@@ -1,7 +1,7 @@
 <?php
 require "../include/config.php";
 
-
+//var_dump($_SESSION["user"]);
 
 // var_dump($_SESSION["login"]);
 
@@ -37,14 +37,10 @@ $user = $query->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <header>
         <nav>
-            <?php if (isset($_SESSION["login"])) {
+            <?php if ($_SESSION["login"] == "admin") {
                 echo "<button><a href='http://localhost/runtrackPHP/module-connexion/index.php'>Accueil</a></button>";
                 echo "<button><a href='http://localhost/runtrackPHP/module-connexion/pages/profil.php'>Profil</a></button>";
                 echo "<button><a href='http://localhost/runtrackPHP/module-connexion/pages/deco.php'>Deconnexion</a></button>";
-            }else {
-                   echo "<button><a href='http://localhost/runtrackPHP/module-connexion/index.php'>Accueil</a></button>";
-                   echo "<button><a href='http://localhost/runtrackPHP/module-connexion/pages/connexion.php'>Connexion</a></button>";
-                   echo "<button><a href='http://localhost/runtrackPHP/module-connexion/pages/inscription.php'>inscription</a></button>";
             }
         ?>
         </nav>
@@ -59,13 +55,32 @@ $user = $query->fetchAll(PDO::FETCH_ASSOC);
             <th>nom</th>
 
              </tr>
-            <td><?php echo $_SESSION["login"] ; ?></td>
-            <td><?php echo $_SESSION["mdp"] ; ?></td>
-            <td><?php echo $_SESSION["prenom"] ; ?></td>
-            <td><?php echo $_SESSION["nom"] ; ?></td>
+            <td><?//php echo $_SESSION["login"] ; ?></td>
+            <td><?//php echo $_SESSION["mdp"] ; ?></td>
+            <td><?//php echo $_SESSION["prenom"] ; ?></td>
+            <td><?//php echo $_SESSION["nom"] ; ?></td>
             </tr>
             </table> -->
-            <?php var_dump($user); ?>
+            <?php // var_dump($user); ?>
+            <?php
+            echo "<table border='1'>";
+            echo" <tr>
+            <th scope='col'>login</th>
+            <th scope='col'>mdp</th>
+            <th scope='col'>prenom</th>
+            <th scope='col'>nom</th>
+            </tr>";
+    
+            foreach ($user as $value) {
+                echo "<tr>";
+                echo " <td>". $value["login"] ."</td>";
+                echo " <td>". $value["password"] ."</td>";
+                echo " <td>". $value["prenom"] ."</td>";
+                echo " <td>". $value["nom"] ."</td>";
+                echo "</tr>";
+            }
+            echo"</table>";
+            ?>
             <img src="../medias/Cvlte2.jpg" alt="Pochette album groupe Cvlte">
     </main>
     

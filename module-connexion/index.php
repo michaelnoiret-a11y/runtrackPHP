@@ -18,8 +18,8 @@ require "include/config.php";
 </head>
 <header>
         <nav>
-            
-            <?php if (isset($_SESSION["user"])) {
+            <?php if (isset($_SESSION["user"]) || isset($_SESSION["login"]) ) {
+                //var_dump($_SESSION["user"]);
                 echo "<button><a href='http://localhost/runtrackPHP/module-connexion/index.php'>Accueil</a></button>";
                 echo "<button><a href='http://localhost/runtrackPHP/module-connexion/pages/profil.php'>Profil</a></button>";
                 echo "<button><a href='http://localhost/runtrackPHP/module-connexion/pages/deco.php'>Deconnexion</a></button>";
@@ -27,6 +27,9 @@ require "include/config.php";
                    echo "<button><a href='http://localhost/runtrackPHP/module-connexion/index.php'>Accueil</a></button>";
                    echo "<button><a href='http://localhost/runtrackPHP/module-connexion/pages/connexion.php'>Connexion</a></button>";
                    echo "<button><a href='http://localhost/runtrackPHP/module-connexion/pages/inscription.php'>inscription</a></button>";
+            }
+            if (isset($_SESSION["login"]) ) {
+                var_dump($_SESSION["login"]);
             }
             ?>
         </nav>
