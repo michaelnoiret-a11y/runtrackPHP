@@ -2,15 +2,22 @@
 
  include "../include/config.php";
 
+// echo password_hash("rasmuslerdorf", PASSWORD_DEFAULT)."\n";
+// $options = [
+//     'cost' => 12,
+// ];
+// echo password_hash("rasmuslerdorf", PASSWORD_BCRYPT, $options)."\n";
 
 if (isset($_POST["submit"])) {
 
     if (!empty($_POST["login"]) && !empty($_POST["mdp"])) {
-        
+        $hash = password_hash(htmlspecialchars($_POST["mdp"]), PASSWORD_DEFAULT);
+         var_dump($hash);
+
         $sql = "INSERT INTO `user` (login, password) VALUES (:login, :mdp) ";
         $query = $pdo -> prepare($sql);
         
-        $query->execute([':login' => $_POST["login"], ':mdp' => password_hash($_POST["mdp"], PASSWORD_DEFAULT)]);
+        $query->execute([':login' => $_POST["login"], ':mdp' => $hash]);
              
         header("Location: connexion.php");
         exit();
@@ -38,7 +45,7 @@ if (isset($_POST["submit"])) {
                 echo "<a href='http://localhost/runtrackPHP/guestbook/index.php'>Accueil</a>";
                 echo "<a href='http://localhost/runtrackPHP/guestbook/pages/guestbook.php'>Livre d'or</a>";
                 echo "<a href='http://localhost/runtrackPHP/guestbook/pages/profil.php'>Profil</a>";
-                echo "<a href='http://localhost/runtrackPHP/guestbook/pages/deco.php'>Deconnexion</a>";
+                echo "<a href='http://localhost/runtrackPHP/guestbook/pages/deconnexion.php'>Deconnexion</a>";
             }else {
                    echo "<a href='http://localhost/runtrackPHP/guestbook/index.php'>Accueil</a>";
                    echo "<a href='http://localhost/runtrackPHP/guestbook/pages/guestbook.php'>Livre d'or</a>";
@@ -60,6 +67,7 @@ if (isset($_POST["submit"])) {
             <input type="text" name="login" placeholder="">
             password:
             <input type="password" name="mdp" placeholder="">
+            <br>
             <input type="submit" name="submit" value="Inscription">
             </table>
         </form>
@@ -72,7 +80,7 @@ if (isset($_POST["submit"])) {
                 echo "<a href='http://localhost/runtrackPHP/guestbook/index.php'>Accueil</a>";
                 echo "<a href='http://localhost/runtrackPHP/guestbook/pages/guestbook.php'>Livre d'or</a>";
                 echo "<a href='http://localhost/runtrackPHP/guestbook/pages/profil.php'>Profil</a>";
-                echo "<a href='http://localhost/runtrackPHP/guestbook/pages/deco.php'>Deconnexion</a>";
+                echo "<a href='http://localhost/runtrackPHP/guestbook/pages/deconnexion.php'>Deconnexion</a>";
             }else {
                    echo "<a href='http://localhost/runtrackPHP/guestbook/index.php'>Accueil</a>";
                    echo "<a href='http://localhost/runtrackPHP/guestbook/pages/guestbook.php'>Livre d'or</a>";
