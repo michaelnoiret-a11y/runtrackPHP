@@ -29,7 +29,7 @@ include "include/config.php";
                    
             }
             if (isset($_SESSION["login"]) ) {
-                var_dump($_SESSION["login"]);
+                // var_dump($_SESSION["login"]);
             }
             ?>
         </nav>
@@ -47,16 +47,16 @@ include "include/config.php";
                 echo "<a href='http://localhost/runtrackPHP/guestbook/index.php'>Accueil</a>";
                 echo "<a href='http://localhost/runtrackPHP/guestbook/pages/guestbook.php'>Livre d'or</a>";
                 echo "<a href='http://localhost/runtrackPHP/guestbook/pages/profil.php'>Profil</a>";
-                echo "<a href='http://localhost/runtrackPHP/guestbook/pages/deco.php'>Deconnexion</a>";
+                echo "<a href='http://localhost/runtrackPHP/guestbook/pages/deconnexion.php'>Deconnexion</a>";
             }else {
                    echo "<a href='http://localhost/runtrackPHP/guestbook/index.php'>Accueil</a>";
                    echo "<a href='http://localhost/runtrackPHP/guestbook/pages/guestbook.php'>Livre d'or</a>";
                    echo "<a href='http://localhost/runtrackPHP/guestbook/pages/connexion.php'>Connexion</a>";
                    echo "<a href='http://localhost/runtrackPHP/guestbook/pages/inscription.php'>inscription</a>";
             }
-            if (isset($_SESSION["login"]) ) {
-                var_dump($_SESSION["login"]);
-            }
+            // if (isset($_SESSION["login"]) ) {
+                // var_dump($_SESSION["login"]);
+            // }
             ?> 
         </nav>
     </footer>
