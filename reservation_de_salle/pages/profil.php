@@ -2,22 +2,31 @@
 
 include("../include/config.php");
 
-if (isset($_POST["submit"])) {
-    if (!empty($_POST["login"] && (!empty($_POST["mdp"] && (!empty($_POST["mdp2"] && ($_POST["mdp"] == $_POST["mdp2"]))))))) {
-$sql = "INSERT INTO user (username, password) VALUES (:login, :mdp)";
-$query = $pdo -> prepare($sql);
-$query->execute([':login' => $_POST["login"], ':mdp' => password_hash($_POST["mdp"], PASSWORD_DEFAULT)]);
-echo "Compte crée";
-header("Location: signin.php");
-}  
-else if (empty($_POST["login"]) || (empty($_POST["mdp"] || (empty($_POST["mdp2"]))))) {
-    echo "Champ(s) non rempli(s)";
-}
-else {
-    echo "Formulaire non transmis";
-}
-}
+// if(!isset ($_SESSION['login']) ) {
+//     header("Location: ../index.php");
+//     exit;
+// }
+// else{
+//     $user = $_SESSION["login"];
+// }
 
+$sql = "SELECT username, password FROM user";
+$query = $pdo->prepare($sql);
+$query->execute();
+$result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+
+if(isset ($_POST["submit"])) {
+    if(!empty($_POST["login"]) && !empty($_POST["mdp"])) {
+        if($_POST["login"] !== $_SESSION["username"] && password_verify($_POST["mdp"], $result['password'])!== true) {
+        $sql = "UPDATE `user` SET login = $_POST[login] WHERE username = $_SESSION[username]";
+        $query = $pdo->prepare($sql);
+        $query->execute();
+    }
+}       else {
+        echo "no";
+}
+}
 ?>
 
 <!DOCTYPE html>
@@ -30,15 +39,14 @@ else {
 </head>
 <header>
     <nav>
-        <?php if (isset($_SESSION["user"])) {
-         echo "<a href='http://localhost/runtrackPHP/reservation_de_salle/index.php'>Accueil</a>";
+       <?php if (isset($_SESSION["user"])) {
+        echo "<a href='http://localhost/runtrackPHP/reservation_de_salle/index.php'>Accueil</a>";
         echo "<a href='http://localhost/runtrackPHP/reservation_de_salle/pages/schedule.php'>Planning</a>";
         echo "<a href='http://localhost/runtrackPHP/reservation_de_salle/pages/reservation-form.php'>Faire une réservation</a>";
         echo "<a href='http://localhost/runtrackPHP/reservation_de_salle/pages/profil.php'>Mon Profil</a>";
         echo "<a href='http://localhost/runtrackPHP/reservation_de_salle/pages/deconnexion.php'>Déconnexion</a>";
         } else {
             echo "<a href='http://localhost/runtrackPHP/reservation_de_salle/index.php'>Accueil</a>";
-            echo "<a href='http://localhost/runtrackPHP/reservation_de_salle/pages/schedule.php'>Planning</a>";
             echo "<a href='http://localhost/runtrackPHP/reservation_de_salle/pages/signup.php'>Inscription</a>";
             echo "<a href='http://localhost/runtrackPHP/reservation_de_salle/pages/signin.php'>Connexion</a>";
         }
@@ -47,26 +55,21 @@ else {
 
 </header>
 <body>
-    <img src ="https://assets.chateauform.com/pm_8909_58_58822-mmwv489e2p-16_9_xlarge.jpg">
     <main>
         <form method="post">
-            Inscription
+            Modification
             <br>
             <br>
-            Identifiant
+            Identifiant:
             <br>
-            <input type="text" name="login" placeholder="">
+            <input type="text" name="login" placeholder="login" value= <?php echo $_SESSION["username"] ?>>
             <br>
-            Mot de passe
+            Mot de passe:
             <br>
-            <input type="password" name="mdp" placeholder="">
-            <br>
-            Confirmation de mot de passe
-            <br>
-            <input type="password" name="mdp2" placeholder="">
+            <input type="password" name="mdp" placeholder="mot de passe">
             <br>
             <br>
-            <input type="submit" name="submit" value="Inscription">
+            <input type="submit" name="submit" value="envoyez">
         </form>
     </main>
     

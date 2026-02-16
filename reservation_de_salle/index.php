@@ -1,22 +1,6 @@
 <?php
 
-include("../include/config.php");
-
-if (isset($_POST["submit"])) {
-    if (!empty($_POST["login"] && (!empty($_POST["mdp"] && (!empty($_POST["mdp2"] && ($_POST["mdp"] == $_POST["mdp2"]))))))) {
-$sql = "INSERT INTO user (username, password) VALUES (:login, :mdp)";
-$query = $pdo -> prepare($sql);
-$query->execute([':login' => $_POST["login"], ':mdp' => password_hash($_POST["mdp"], PASSWORD_DEFAULT)]);
-echo "Compte crée";
-header("Location: signin.php");
-}  
-else if (empty($_POST["login"]) || (empty($_POST["mdp"] || (empty($_POST["mdp2"]))))) {
-    echo "Champ(s) non rempli(s)";
-}
-else {
-    echo "Formulaire non transmis";
-}
-}
+include("include/config.php");
 
 ?>
 
@@ -26,7 +10,7 @@ else {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <header>
     <nav>
@@ -47,27 +31,9 @@ else {
 
 </header>
 <body>
-    <img src ="https://assets.chateauform.com/pm_8909_58_58822-mmwv489e2p-16_9_xlarge.jpg">
+    <img src="https://tse1.mm.bing.net/th/id/OIP.Iy8qxLxXM9_70AZMtbN2WgHaEK?rs=1&pid=ImgDetMain&o=7&rm=3">
     <main>
-        <form method="post">
-            Inscription
-            <br>
-            <br>
-            Identifiant
-            <br>
-            <input type="text" name="login" placeholder="">
-            <br>
-            Mot de passe
-            <br>
-            <input type="password" name="mdp" placeholder="">
-            <br>
-            Confirmation de mot de passe
-            <br>
-            <input type="password" name="mdp2" placeholder="">
-            <br>
-            <br>
-            <input type="submit" name="submit" value="Inscription">
-        </form>
+
     </main>
     
 </body>

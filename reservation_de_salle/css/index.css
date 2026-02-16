@@ -1,0 +1,25 @@
+header, footer {
+display: flex;
+flex-direction: row;
+padding: 10px;
+/* margin: 10px; */
+background-color:gray ;
+justify-content: space-between;
+text-decoration: none;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-image: img src="https://assets.chateauform.com/pm_8909_58_58822-mmwv489e2p-16_9_xlarge.jpg";
+    size: 100%;
+    /* background-color: black; */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    background-color: lightgrey;
+    padding: 10px;
+    size: 10px;
+}
