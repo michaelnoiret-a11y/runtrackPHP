@@ -1,0 +1,21 @@
+header {
+    display: flex;
+    background-color: white;
+    color: rgb(0, 0, 0);
+    flex-direction: row;
+    text-decoration: none;
+    
+    
+}
+
+body {
+    background-color: rgb(255, 0, 0);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    margin-top: 10px;
+    background-color: gold;
+}
